@@ -2,21 +2,23 @@
 title: "Lab 1: Introduction to Quarto"
 author: "Justin Koida"
 date: "January 9, 2025"
-format: html
+format: 
+  html:
+    theme: darkly
+    toc: true
+    toc-depth: 2
+    toc-title: Lab 1 Table of Contents
+    
 editor: source
 embed-resources: true
 execute:
   echo: true
   error: true
+  code-fold: true
+
 ---
 
-# Part Two: Exploring Quarto Documents
-
-## Specifying Global Execute Options
-
-Execution options specify how the R code in your Quarto document should be
-displayed. This [guide](https://quarto.org/docs/computations/execution-options.html)
-provides descriptions on the options you can specify in a document's execution.
+## Format Questions
 
 **Question 1** -- Add your name and the date to the YAML. 
 
@@ -65,6 +67,8 @@ section (e.g., Tooth Growth Dataset).
 #| echo: true
 #| label: creating-a-plot
 #| layout-ncol: 2
+#| fig-align: center
+#| fig-cap: "Boxplots for Tooth length"
 
 library(tidyverse)
 
@@ -94,3 +98,12 @@ should be **center aligned**.
 **Question 9** -- Specify a **figure caption** for the boxplots (using a
 code-chunk option).
 
+## T-test of ToothGrowth
+**Question 10**
+```{r}
+t.test(len ~ supp, alternate = "two.sided", var.equal=FALSE, data=ToothGrowth)
+```
+**Question 12**
+  1) With a p-value = 0.06063 we fail to reject the the null hypothesis. Thus we cannot conclude that the means of the two treatments differ.
+  
+  2) With a 95% confidence interval, we are 95% confident that the true difference in means lie between the range -.0.1710156 through 7.5710156.
